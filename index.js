@@ -14,7 +14,7 @@ app.listen(3000, () => {
   initializeClient = new OpenAIClient();
 });
 
-app.get("/", async(req, res)) {
+app.get("/", async (req, res)) {
   let response = await initializeClient.generateResponse("https://ocw.mit.edu/ans7870/9/9.00SC/MIT9_00SCF11_text.pdf", "Explain psychology");
   res.send(response);
 });
