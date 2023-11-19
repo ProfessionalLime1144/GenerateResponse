@@ -4,16 +4,20 @@ import OpenAI from "openai";
 import { CharacterTextSplitter, RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import PdfParse from "./modules/pdfParsed.js";
 
+let initializeClient;
 config();
 
 const app = express();
 
 app.listen(3000, () => {
   console.log("Connected to port 3000.");
-  let initializeClient = new OpenAIClient();
+  initializeClient = new OpenAIClient();
 });
 
-app.get("/")
+app.get("/", async(req, res)) {
+  let response = await initializeClient.generateResponse("https://ocw.mit.edu/ans7870/9/9.00SC/MIT9_00SCF11_text.pdf", "Explain psychology");
+  res.send(response);
+});
 
 class OpenAIClient {
   constructor() {
@@ -109,9 +113,3 @@ class OpenAIClient {
     }
   }
 }
-
-
-let initializeClient = new OpenaiClient();
-let response = initializeClient.generateResponse("https://ocw.mit.edu/ans7870/9/9.00SC/MIT9_00SCF11_text.pdf", "Explain psychology").then(response => {
-  console.log(response);
-});
