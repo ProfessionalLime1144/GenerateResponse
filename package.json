@@ -1,0 +1,24 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Generate Responses from gpt-3.5-turbo and embed the file via huggingface.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon ./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "langchain": "^0.0.182-rc.1",
+    "openai": "^4.19.0",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
+  }
+}
